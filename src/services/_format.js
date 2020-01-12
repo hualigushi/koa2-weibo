@@ -24,7 +24,7 @@ function _formatUserPicture(obj) {
  */
 function formatUser(list) {
     if (list == null) {
-        return list;
+        return list
     }
     if (list instanceof Array) {
         return list.map(_formatUserPicture)

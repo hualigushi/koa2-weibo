@@ -2,10 +2,10 @@
  * 首页 api 
  */
 
-const router = require('koa-router')();
+const router = require('koa-router')()
 const {
     loginCheck
-} = require('../../middlewares/loginChecks');
+} = require('../../middlewares/loginChecks')
 const {
     create
 } = require('../../controller/blog-home')

@@ -13,7 +13,7 @@ const {
 
 const {
     createBlog
-} = require('../services/blog');
+} = require('../services/blog')
 
 
 /** 
@@ -33,7 +33,7 @@ async function create({
         })
         return new SuccessModel(blog)
     } catch (ex) {
-        console.error(ex.message, ex.stack);
+        console.error(ex.message, ex.stack)
         return new ErrorModel(createBlogFailInfo)
     }
 }

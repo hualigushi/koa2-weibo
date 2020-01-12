@@ -5,7 +5,7 @@
 const router = require('koa-router')()
 const {
     loginCheck
-} = require('../../middlewares/loginChecks');
+} = require('../../middlewares/loginChecks')
 const {
     getProfileBlogList
 } = require('../../controller/blog-profile')
@@ -17,14 +17,14 @@ const {
     unFollow
 } = require('../../controller/user-relation')
 
-router.prefix('/api/profile');
+router.prefix('/api/profile')
 
 //加载更多
 router.get('/loadMore/:userName/::pageIndex', loginCheck, async (ctx, next) => {
     let {
         userName,
         pageIndex
-    } = ctx.params;
+    } = ctx.params
     pageIndex = parseInt(pageIndex)
 
     const result = await getProfileBlogList(userName, pageIndex)
@@ -39,10 +39,10 @@ router.get('/loadMore/:userName/::pageIndex', loginCheck, async (ctx, next) => {
 router.post('/follow', loginCheck, async (ctx, next) => {
     const {
         id: myUserId
-    } = ctx.session.userInfo;
+    } = ctx.session.userInfo
     const {
         userId: curUserId
-    } = ctx.request.body;
+    } = ctx.request.body
     ctx.body = await follow(myUserId, curUserId)
 
 })

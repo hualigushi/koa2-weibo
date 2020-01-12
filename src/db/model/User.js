@@ -2,7 +2,7 @@
  * 用户数据模型
  */
 
-const seq = require('../seq');
+const seq = require('../seq')
 const {
     STRING,
     DECIMAL

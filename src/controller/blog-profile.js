@@ -4,7 +4,7 @@
 
 const {
     getBlogListByUser
-} = require('../services/blog');
+} = require('../services/blog')
 const {
     PAGE_SIZE
 } = require('../conf/constants')

@@ -35,7 +35,7 @@ async function getFollowers(userId) {
     const {
         count,
         userList
-    } = await getFollowersByUser(userId);
+    } = await getFollowersByUser(userId)
 
     return new SuccessModel({
         count,

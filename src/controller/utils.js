@@ -7,7 +7,7 @@ const fse = require('fs-extra')
 const {
     ErrorModel,
     SuccessModel
-} = require('../model/ResModel');
+} = require('../model/ResModel')
 const {
     uploadFileSizeFailInfo
 } = require('../model/ErrorInfo')
@@ -38,7 +38,7 @@ async function saveFile({
     }
 
     //移动文件
-    const fileName = Date.now() + '.' + name; //防止重名
+    const fileName = Date.now() + '.' + name //防止重名
     const distFilePath = path.join(DIST_FOLDER_PATH, fileName) //目的地
     await fse.move(filePath, distFilePath)
 

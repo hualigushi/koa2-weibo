@@ -4,7 +4,7 @@
 const {
     Blog,
     User
-} = require('../db/model/index');
+} = require('../db/model/index')
 const {
     formatUser
 } = require('./_format')
@@ -21,7 +21,7 @@ async function createBlog({
         content,
         image
     })
-    return result.dataValues;
+    return result.dataValues
 }
 
 //根据用户获取微博列表
@@ -55,11 +55,11 @@ async function getBlogListByUser({
     //result.count 总数，跟分页无关
     //result.rows  查询结果，数组
 
-    let blogList = result.rows.map(row => row.dataValues);
+    let blogList = result.rows.map(row => row.dataValues)
 
     blogList = blogList.map(blogItem => {
         const user = blogItem.user.dataValues
-        blogItem.user = formatUser(user);
+        blogItem.user = formatUser(user)
         return blogItem
     })
 

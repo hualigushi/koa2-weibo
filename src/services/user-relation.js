@@ -62,7 +62,7 @@ async function getFollowersByUser(userId) {
         let user = item.user
         user = user.dataValues
         user = formatUser(user)
-        return user;
+        return user
     })
 
     return {
@@ -84,7 +84,7 @@ async function addFollower(userId, followerId) {
         followerId
     })
 
-    return result.dataValues;
+    return result.dataValues
 }
 
 /**
