@@ -1,6 +1,6 @@
-/**
+/** 
  * @description 环境变量
- * @author money
+ * @author xyp
  */
 
 const ENV = process.env.NODE_ENV
@@ -11,5 +11,5 @@ module.exports = {
     isProd: ENV === 'production',
     notProd: ENV !== 'production',
     isTest: ENV === 'test',
-    notTest: ENV !== 'test',
+    notTest: ENV !== 'test'
 }

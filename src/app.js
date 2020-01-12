@@ -9,8 +9,18 @@ const session = require('koa-generic-session')
 const redisStore = require('koa-redis')
 
 const { REDIS_CONF } = require('./conf/db')
-const { isProd } = require('../utils/env')
+const { isProd } = require('./utils/env')
+const {
+    SESSION_SECRET_KEY
+} = require('./conf/secretKeys')
 
+const squareAPIRouter = require('./routes/api/blog-square')
+const profileAPIRouter = require('./routes/api/blog-profile')
+const blogHomeAPIRouter = require('./routes/api/blog-home')
+const blogViewRouter = require('./routes/view/blog')
+const utilsAPIRouter = require('./routes/api/utils')
+const userViewRouter = require('./routes/view/user')
+const userAPIRouter = require('./routes/api/user')
 const errorViewRouter = require('./routes/view/error')
 
 // error handler
@@ -35,7 +45,7 @@ app.use(views(__dirname + '/views', {
 }))
 
 // session 配置
-app.keys = ['UIsfd_789#$']
+app.keys = [SESSION_SECRET_KEY]
 app.use(session({
     key: 'weibo.sid', // cookie name,默认是koa.sid
     prefix: 'weibo:sess:', // redis key的前缀，默认是  koa:sess:
@@ -58,6 +68,13 @@ app.use(session({
 // })
 
 // routes
+app.use(squareAPIRouter.routes(), squareAPIRouter.allowedMethods())
+app.use(profileAPIRouter.routes(), profileAPIRouter.allowedMethods())
+app.use(blogHomeAPIRouter.routes(), blogHomeAPIRouter.allowedMethods())
+app.use(blogViewRouter.routes(), blogViewRouter.allowedMethods())
+app.use(utilsAPIRouter.routes(), utilsAPIRouter.allowedMethods())
+app.use(userViewRouter.routes(), userViewRouter.allowedMethods())
+app.use(userAPIRouter.routes(), userAPIRouter.allowedMethods())
 app.use(errorViewRouter.routes(),errorViewRouter.allowedMethods())//404需要放到最后
 
 // error-handling
