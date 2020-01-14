@@ -2,7 +2,7 @@
  * 微博 view 路由
  */
 
-const router = require('koa-router')();
+const router = require('koa-router')()
 const {
     loginRedirect
 } = require('../../middlewares/loginChecks')
@@ -29,7 +29,7 @@ router.get('/', loginRedirect, async (ctx, next) => {
 router.get('/profile', loginRedirect, async (ctx, next) => {
     const {
         userName
-    } = ctx.session.userInfo;
+    } = ctx.session.userInfo
     ctx.redirect(`/profile/${userName}`)
 })
 router.get('/profile/:userName', loginRedirect, async (ctx, next) => {
@@ -140,4 +140,4 @@ router.get('/square', loginRedirect, async (ctx, next) => {
     })
 })
 
-module.exports = router;
+module.exports = router
