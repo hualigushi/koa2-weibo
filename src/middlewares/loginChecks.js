@@ -4,10 +4,10 @@
 
 const {
     ErrorModel
-} = require('../model/ResModel');
+} = require('../model/ResModel')
 const {
     loginCheckFailInfo
-} = require('../model/ErrorInfo');
+} = require('../model/ErrorInfo')
 
 
 //服务端调接口时验证是否登录（如token过期等等）
@@ -15,11 +15,11 @@ async function loginCheck(ctx, next) {
     if (ctx.session && ctx.session.userInfo) {
         //已登录
         await next()
-        return;
+        return
     }
 
     //未登录
-    ctx.body = new ErrorModel(loginCheckFailInfo);
+    ctx.body = new ErrorModel(loginCheckFailInfo)
 }
 
 
@@ -28,11 +28,11 @@ async function loginRedirect(ctx, next) {
     if (ctx.session && ctx.session.userInfo) {
         //已登录
         await next()
-        return;
+        return
     }
 
     //未登录
-    const curUrl = ctx.url;
+    const curUrl = ctx.url
     ctx.redirect('/login?url=' + encodeURIComponent(curUrl))
 }
 
