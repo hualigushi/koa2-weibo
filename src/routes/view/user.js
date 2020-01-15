@@ -1,19 +1,36 @@
 /**
- * @description 页面登录注册
- * @author money
+ * @description user view 路由
+ * @author jiuchang
  */
 
-const router  = require('koa-router')()
-const {loginRedict} = require('../../middlewares/routeCkeck')
+const router=require('koa-router')()
+const {loginRedirect} =require('../../middlewares/loginChecks')
+
+function getLoginInfo(ctx){
+    let data={
+        isLogin:false //默认未登录 
+    }
+
+    const userInfo=ctx.session.userInfo
+    if(userInfo){
+        data={
+            isLogin:true,
+            userName: userInfo.userName
+        }
+    }
+
+    return data
+}
 
 router.get('/login',async (ctx,next)=>{
-    await ctx.render('login',{})
+    console.log('执行了')
+    await ctx.render('login',getLoginInfo(ctx))
+})
+router.get('/register',async (ctx,next)=>{
+    await ctx.render('register',getLoginInfo(ctx))
 })
 
-router.get('/register',async (ctx,next)=>{
-    await ctx.render('register',{})
-})
-router.get('/setting',loginRedict,async(ctx,next)=>{
+router.get('/setting',loginRedirect,async (ctx,next)=>{
     await ctx.render('setting',ctx.session.userInfo)
 })
 
