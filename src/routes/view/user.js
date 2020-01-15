@@ -1,6 +1,6 @@
 /**
  * @description user view 路由
- * @author jiuchang
+ * @author money
  */
 
 const router=require('koa-router')()

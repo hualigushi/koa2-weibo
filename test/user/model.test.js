@@ -1,6 +1,6 @@
 /**
  * @description user model test
- * @author jiuchang
+ * @author money
  */
 
 

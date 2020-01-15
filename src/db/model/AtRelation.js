@@ -1,6 +1,6 @@
 /**
  * @description 微博 @ 用户的关系，数据模型
- * @author jiuchang
+ * @author money
  */
 
 const seq = require('../seq')

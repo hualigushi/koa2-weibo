@@ -1,6 +1,6 @@
 /**
  * @description 微博 @ 关系 controller
- * @author jiuchang
+ * @author money
  */
 
 const {

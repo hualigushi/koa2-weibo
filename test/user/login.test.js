@@ -1,6 +1,6 @@
 /**
  * @description user api test
- * @author jiuchang
+ * @author money
  */
 
 const server = require('../server')
