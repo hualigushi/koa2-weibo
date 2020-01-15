@@ -63,6 +63,21 @@ async function createUser({
     return result.dataValues
 }
 
+/**
+ * 删除用户
+ * @param {string} userName 用户名 
+ */
+async function deleteUser(userName){
+    const result=await User.destroy({
+        where: {
+            userName
+        }
+    })
+    //result 删除的行数
+    return result>0
+}
+
+
 //更新用户信息
 async function updateUser({
     newPassword,
@@ -107,5 +122,6 @@ async function updateUser({
 module.exports = {
     getUserInfo,
     createUser,
+    deleteUser,
     updateUser
 }
