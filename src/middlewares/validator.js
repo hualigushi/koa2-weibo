@@ -3,12 +3,12 @@
  * @author money
  */
 const {ErrorModel} = require('../model/resModel')
-const {jsonScrema} =require('../model/errorInfo')
+const {jsonSchemaFileInfo} =require('../model/errorInfo')
 /**
   * 
   * @param {function} validateFunction 验证函数
   */
-function genValidate(validateFn){
+function genValidator(validateFn){
     async function validate(ctx,next){
 
         const error =  validateFn(ctx.request.body)
@@ -24,5 +24,5 @@ function genValidate(validateFn){
 }
 
 module.exports = {
-    genValidate
+    genValidator
 }
