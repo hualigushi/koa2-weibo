@@ -8,13 +8,13 @@ const {jsonScrema} =require('../model/errorInfo')
   * 
   * @param {function} validateFunction 验证函数
   */
-function genValidate(validateFunction){
+function genValidate(validateFn){
     async function validate(ctx,next){
 
-        const error =  validateFunction(ctx.request.body)
+        const error =  validateFn(ctx.request.body)
 
         if(error){
-            ctx.body= new ErrorModel(jsonScrema)
+            ctx.body= new ErrorModel(jsonSchemaFileInfo)
             return 
         }
         
