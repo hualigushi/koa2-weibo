@@ -5,6 +5,7 @@
 const {
     getUserInfo,
     createUser,
+    deleteUser,
     updateUser
 } = require('../services/user')
 const {
