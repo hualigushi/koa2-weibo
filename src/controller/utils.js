@@ -25,7 +25,13 @@ fse.pathExists(DIST_FOLDER_PATH).then(exist => {
     }
 })
 
-//文件上传  
+/**
+ * 保存文件
+ * @param {string} name 文件名 
+ * @param {string} type 文件类型
+ * @param {number} size 文件体积 
+ * @param {string} filePath 文件路径
+ */  
 async function saveFile({
     name,
     type,
