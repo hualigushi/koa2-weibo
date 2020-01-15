@@ -7,7 +7,7 @@ const {MYSQL_CONF} = require('../conf/db')
 const  { isPro,isTest}  = require('../utils/env')
 
 let conf={
-    host:'localhost',
+    host:MYSQL_CONF.host,
     dialect:'mysql'
 }
 if(isPro){
