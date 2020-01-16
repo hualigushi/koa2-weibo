@@ -19,13 +19,13 @@ const {
 } = require('../../middlewares/validator')
 const {
     loginCheck
-} = require('../../middlewares/loginCheckes')
+} = require('../../middlewares/loginChecks')
 const {
     isTest
 } = require('../../utils/env')
 const {
     getFollowers
-} = require('../../controller/blog-relation')
+} = require('../../controller/user-relation')
 
 
 router.prefix('/api/user')
