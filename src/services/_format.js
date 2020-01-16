@@ -4,7 +4,9 @@
  */
 
 const {DEFAULT_PICTURE} =require('../conf/constants')
-
+const {
+    timeFormat
+} = require('../utils/dt')
 /**
  * 用户默认头像
  * @param {Object} obj 用户对象
