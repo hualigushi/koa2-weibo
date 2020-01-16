@@ -39,7 +39,7 @@ async function getFollowers(userId) {
 
     return new SuccessModel({
         count,
-        followerList: userList
+        followersList: userList
     })
 }
 
