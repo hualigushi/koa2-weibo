@@ -5,7 +5,7 @@
 
 const {createBlog,getFollowersBlogList}=require('../services/blog')
 const {SuccessModel,ErrorModel}=require('../model/ResModel')
-const { PAGE_SIZE, REG_FOR_AT_WHO } = require('../conf/constant')
+const { PAGE_SIZE, REG_FOR_AT_WHO } = require('../conf/constants')
 const {createBlogFailInfo}=require('../model/ErrorInfo')
 const xss=require('xss')
 
