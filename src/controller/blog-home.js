@@ -23,8 +23,8 @@ async function create({userId,content,image}){
             image
         })
         return new SuccessModel(blog)
-    } catch (error) {
-        console.error(error.message,ex.stack)
+    } catch (ex) {
+        console.error(ex.message,ex.stack)
         return new ErrorModel(createBlogFailInfo)
     }
 
