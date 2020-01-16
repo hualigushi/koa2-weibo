@@ -47,8 +47,8 @@ test('获取李四的粉丝，应该有张三', async () => {
 // 获取关注人
 test('获取关注人， 应该有李四', async () => {
     const result = await getFollower(Z_ID)
-    const { count, followerList } = result.data
-    const hasUserName = followerList.some(followerInfo => {
+    const { count, followersList } = result.data
+    const hasUserName = followersList.some(followerInfo => {
         return followerInfo.userName === L_USER_NAME
     })
 
