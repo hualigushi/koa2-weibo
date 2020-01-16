@@ -9,6 +9,7 @@ const { getHomeBlogList } = require('../../controller/blog-home')
 const { getSquareBlogList } = require('../../controller/blog-square')
 const { getFans, getFollowers } = require('../../controller/user-relation')
 const {getProfileBlogList} =require('../../controller/blog-profile')
+const { isExist } = require('../../controller/user')
 const { getAtMeCount, getAtMeBlogList, markAsRead } = require('../../controller/blog-at')
 
 //首页
