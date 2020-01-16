@@ -1,22 +1,13 @@
-/** 
- * blog servers
+/**
+ * @description 微博 service
+ * @author jiuchang
  */
-const {
-    Blog,
-    User
-} = require('../db/model/index')
-const {
-    formatUser
-} = require('./_format')
 
+const {Blog,User,UserRelation}=require('../db/model/index')
+const {formatUser,formatBlog}=require('./_format')
 
-//创建微博
-async function createBlog({
-    userId,
-    content,
-    image
-}) {
-    const result = await Blog.create({
+async function createBlog({userId,content,image}){
+    const result =await Blog.create({
         userId,
         content,
         image
@@ -24,42 +15,38 @@ async function createBlog({
     return result.dataValues
 }
 
-//根据用户获取微博列表
-async function getBlogListByUser({
-    userName,
-    pageIndex = 0,
-    pageSize = 10
-}) {
+/**
+ * 根据用户获取微博列表
+ * @param {Object} param0 查询参数 {userName,pageIndex=0,pageSize=10｝
+ */
+async function getBlogListByUser({userName,pageIndex=0,pageSize=10}){
     //拼接查询条件
-    const userWhereOpts = {}
-    if (userName) {
-        userWhereOpts.userName = userName
+    const userWhereOpts={}
+    if(userName){
+        userWhereOpts.userName=userName
     }
-
-    //查询
-    const result = await Blog.findAndCountAll({
+    //执行查询
+    const  result=await Blog.findAndCountAll({
         limit: pageSize,
-        offset: pageSize * pageIndex, //跳过多少页
+        offset: pageSize*pageIndex,
         order: [
-            ['id', 'desc'] //根据id倒序查询
+            ['id','desc']
         ],
-        include: [ //连表查询
+        include: [
             {
                 model: User,
-                attributes: ['userName', 'nickName', ], //需要的信息 
+                attributes: ['userName','nickName','picture'],
                 where: userWhereOpts
             }
         ]
     })
 
-    //result.count 总数，跟分页无关
-    //result.rows  查询结果，数组
-
+    //获取dataValues
     let blogList = result.rows.map(row => row.dataValues)
-
-    blogList = blogList.map(blogItem => {
-        const user = blogItem.user.dataValues
-        blogItem.user = formatUser(user)
+    blogList=formatBlog(blogList)
+    blogList=blogList.map(blogItem=>{
+        const user=blogItem.user.dataValues
+        blogItem.user=formatUser(user)
         return blogItem
     })
 
@@ -67,11 +54,50 @@ async function getBlogListByUser({
         count: result.count,
         blogList
     }
-
 }
 
 
-module.exports = {
+/**
+ * 获取关注着的微博列表（首页）
+ * @param {Object} param0 查询条件 { userId, pageIndex = 0, pageSize = 10 }
+ */
+async function getFollowersBlogList({ userId, pageIndex = 0, pageSize = 10 }) {
+    const result = await Blog.findAndCountAll({
+        limit: pageSize, // 每页多少条
+        offset: pageSize * pageIndex, // 跳过多少条
+        order: [
+            ['id', 'desc']
+        ],
+        // where: {userId},
+        include: [
+            {
+                model: User,
+                attributes: ['userName', 'nickName', 'picture']
+            },
+            {
+                model: UserRelation,
+                attributes: ['userId', 'followerId'],
+                where: { userId }
+            }
+        ]
+    })
+
+    // 格式化数据
+    let blogList = result.rows.map(row => row.dataValues)
+    blogList = formatBlog(blogList)
+    blogList = blogList.map(blogItem => {
+        blogItem.user = formatUser(blogItem.user.dataValues)
+        return blogItem
+    })
+
+    return {
+        count: result.count,
+        blogList
+    }
+}
+
+module.exports={
     createBlog,
-    getBlogListByUser
+    getBlogListByUser,
+    getFollowersBlogList
 }
