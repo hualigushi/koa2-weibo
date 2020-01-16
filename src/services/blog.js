@@ -65,7 +65,7 @@ async function getBlogListByUser({
 
     return {
         count: result.count,
-        list
+        blogList
     }
 
 }
