@@ -113,9 +113,9 @@ router.get('/getAtList', loginCheck, async (ctx, next) => {
     } = ctx.session.userInfo
     const result = await getFollowers(userId)
     const {
-        followerList
+        followersList
     } = result.data
-    const list = followerList.map(item => {
+    const list = followersList.map(item => {
         return `${item.nickName} - ${item.userName}`
     })
     ctx.body = list
