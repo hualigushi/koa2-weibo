@@ -3,7 +3,7 @@
  * @author
  */
 
-const {DEFAULT_PICTURE} =require('../conf/constant')
+const {DEFAULT_PICTURE} =require('../conf/constants')
 
 /**
  * 用户默认头像
