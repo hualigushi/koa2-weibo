@@ -19,7 +19,7 @@ const {
 const {
     PAGE_SIZE,
     REG_FOR_AT_WHO
-} = require('../config/constant')
+} = require('../config/constants')
 
 const {
     getUserInfo
