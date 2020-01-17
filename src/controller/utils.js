@@ -50,7 +50,7 @@ async function saveFile({
 
     //返回信息   
     return new SuccessModel({
-        url: fileName,
+        url: '/'+ fileName,
     })
 
 
