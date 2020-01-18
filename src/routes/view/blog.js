@@ -5,7 +5,7 @@
 
 const router=require('koa-router')()
 const {loginRedirect}=require('../../middlewares/loginChecks')
-const { getHomeBlogList } = require('../../controller/blog-home')
+const { getHomeList } = require('../../controller/blog-home')
 const { getSquareBlogList } = require('../../controller/blog-square')
 const { getFans, getFollowers } = require('../../controller/user-relation')
 const {getProfileBlogList} =require('../../controller/blog-profile')
@@ -17,7 +17,7 @@ router.get('/', loginRedirect, async (ctx, next) => {
     const userInfo = ctx.session.userInfo
     const { id: userId } = userInfo
     // 获取第一页数据
-    const result = await getHomeBlogList(userId)
+    const result = await getHomeList(userId)
     const { isEmpty, blogList, pageSize, pageIndex, count } = result.data
 
     // 获取粉丝

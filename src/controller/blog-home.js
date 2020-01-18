@@ -19,14 +19,14 @@ const {
 const {
     PAGE_SIZE,
     REG_FOR_AT_WHO
-} = require('../config/constants')
+} = require('../conf/constant')
 
 const {
     getUserInfo
 } = require('../services/user')
 const {
     createAtRelation
-} = require('../services/atRelation')
+} = require('../services/at-relation')
 
 /**
  * @description 创建微博
@@ -67,7 +67,7 @@ async function create({
 
         return new SuccessModel(data)
     } catch (error) {
-        console.error(error.message, error.stack);
+        console.error(error.message, error.stack)
         return new ErrorModel(createBlogFailInfo)
     }
 }

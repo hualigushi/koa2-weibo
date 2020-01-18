@@ -7,7 +7,7 @@ const {
 } = require('../services/blog')
 const {
     PAGE_SIZE
-} = require('../conf/constants')
+} = require('../conf/constant')
 const {
     SuccessModel,
     ErrorModel

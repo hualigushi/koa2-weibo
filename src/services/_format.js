@@ -3,7 +3,7 @@
  * @author
  */
 
-const {DEFAULT_PICTURE, REG_FOR_AT_WHO} =require('../conf/constants')
+const {DEFAULT_PICTURE, REG_FOR_AT_WHO} =require('../conf/constant')
 const {
     timeFormat
 } = require('../utils/dt')

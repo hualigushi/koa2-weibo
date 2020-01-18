@@ -4,7 +4,7 @@
 
 const {
     PAGE_SIZE
-} = require('../conf/constants')
+} = require('../conf/constant')
 const {
     SuccessModel
 } = require('../model/ResModel')

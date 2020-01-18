@@ -9,7 +9,7 @@ const {
     updateAtRelation
 } = require('../services/at-relation')
 const { SuccessModel, ErrorModel } = require('../model/ResModel')
-const { PAGE_SIZE } = require('../conf/constants')
+const { PAGE_SIZE } = require('../conf/constant')
 
 /**
  * 获取 @ 我的微博数量
