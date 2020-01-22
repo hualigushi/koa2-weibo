@@ -170,6 +170,7 @@ module.exports = {
     isExist,
     register,
     login,
+    deleteCurUser,
     changeInfo,
     changePassword,
     logout

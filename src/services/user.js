@@ -8,7 +8,9 @@ const {
 const {
     formatUser
 } = require('./_format')
-
+const {
+    addFollower
+} = require('./user-relation')
 /** 
  * 获取用户信息
  * @param {string} userName 用户名
@@ -60,6 +62,10 @@ async function createUser({
         gender,
         nickName: nickName ? nickName : userName
     })
+
+    // 自己关注自己
+    addFollower(result.dataValues.id, result.dataValues.id)
+
     return result.dataValues
 }
 
@@ -67,14 +73,14 @@ async function createUser({
  * 删除用户
  * @param {string} userName 用户名 
  */
-async function deleteUser(userName){
-    const result=await User.destroy({
+async function deleteUser(userName) {
+    const result = await User.destroy({
         where: {
             userName
         }
     })
     //result 删除的行数
-    return result>0
+    return result > 0
 }
 
 

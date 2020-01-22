@@ -1,6 +1,6 @@
 /** 
  * @description 环境变量
- * @author xyp
+ * @author money
  */
 
 const ENV = process.env.NODE_ENV

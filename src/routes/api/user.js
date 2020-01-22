@@ -1,6 +1,6 @@
 /**
  * @description user API
- * @author chengpeng
+ * @author money
  */
 
 const router = require('koa-router')()

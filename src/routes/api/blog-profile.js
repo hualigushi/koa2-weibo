@@ -20,7 +20,7 @@ const {
 router.prefix('/api/profile')
 
 //加载更多
-router.get('/loadMore/:userName/::pageIndex', loginCheck, async (ctx, next) => {
+router.get('/loadMore/:userName/:pageIndex', loginCheck, async (ctx, next) => {
     let {
         userName,
         pageIndex

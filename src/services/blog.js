@@ -1,6 +1,6 @@
 /**
  * @description 微博 service
- * @author jiuchang
+ * @author money
  */
 
 const {Blog,User,UserRelation}=require('../db/model/index')

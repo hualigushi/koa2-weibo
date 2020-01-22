@@ -4,7 +4,7 @@
  */
 
 const server = require('../server')
-const { getFans, getFollower } = require('../../src/controller/user-relation')
+const { getFans, getFollowers } = require('../../src/controller/user-relation')
 
 const {
     Z_ID,
@@ -12,7 +12,7 @@ const {
     Z_COOKIE,
     L_ID,
     L_USER_NAME
-} =  require('../test.userInfo')
+} =  require('../testUserInfo')
 
 // 先让张三取消关注李四（为了避免张三关注了李四)
 test('无论如何，先取消关注应该成功', async () => {
@@ -46,7 +46,7 @@ test('获取李四的粉丝，应该有张三', async () => {
 
 // 获取关注人
 test('获取关注人， 应该有李四', async () => {
-    const result = await getFollower(Z_ID)
+    const result = await getFollowers(Z_ID)
     const { count, followersList } = result.data
     const hasUserName = followersList.some(followerInfo => {
         return followerInfo.userName === L_USER_NAME
@@ -63,6 +63,7 @@ test('获取张三的at列表， 应该有lisi', async () => {
         .set('cookie', Z_COOKIE)
     const atList = res.body
     const hasUserName = atList.some(item => {
+        console.log(item)
         return item.indexOf(`- ${L_USER_NAME}`) > 0
     })
 

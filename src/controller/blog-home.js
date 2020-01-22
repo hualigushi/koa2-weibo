@@ -1,6 +1,6 @@
 /**
  * @description blog-home controller
- * @author chengpeng
+ * @author money
  */
 
 const xss = require('xss')
@@ -30,7 +30,7 @@ const {
 
 /**
  * @description 创建微博
- * @author chengpeng
+ * @author money
  * @param {Object} param0 创建微博参数 { userId, content, image }
  */
 async function create({
@@ -74,11 +74,11 @@ async function create({
 
 /**
  * @description 获取首页微博
- * @author chengpeng
+ * @author money
  * @param {number} userId 
  * @param {number} pageIndex 
  */
-async function getHomeList(userId, pageIndex = 0) {
+async function getHomeBlogList(userId, pageIndex = 0) {
     const result = await getFollowersBlogList({
         userId,
         pageIndex,
@@ -100,5 +100,5 @@ async function getHomeList(userId, pageIndex = 0) {
 
 module.exports = {
     create,
-    getHomeList
+    getHomeBlogList
 }

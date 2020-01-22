@@ -7,7 +7,8 @@ const {
     loginCheck
 } = require('../../middlewares/loginChecks')
 const {
-    create
+    create,
+    getHomeBlogList
 } = require('../../controller/blog-home')
 const {
     genValidator
@@ -15,6 +16,10 @@ const {
 
 //验证微博的数据格式
 const blogValidate = require('../../validator/blog')
+
+const {
+    getBlogListStr
+} = require('../../utils/blog')
 
 router.prefix('/api/blog')
 
@@ -32,6 +37,22 @@ router.post('/create', loginCheck, genValidator(blogValidate), async (ctx, next)
         content,
         image
     })
+})
+
+// 加载更多
+router.get('/loadMore/:pageIndex', loginCheck, async (ctx, next) => {
+    let {
+        pageIndex
+    } = ctx.params
+    pageIndex = parseInt(pageIndex)
+    const {
+        id: userId
+    } = ctx.session.userInfo
+
+    const result = await getHomeBlogList(userId, pageIndex)
+    // 渲染为html字符串
+    result.data.blogListTpl = getBlogListStr(result.data.blogList)
+    ctx.body = result
 })
 
 

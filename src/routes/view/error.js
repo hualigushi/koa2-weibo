@@ -7,12 +7,12 @@ const router = require('koa-router')()
 
 //error
 router.get('/error',async (ctx,next)=>{
-    await ctx.render('你的服务器崩溃了')
+    await ctx.render('error')
 })
 
 //404
 router.get('*',async (ctx,next)=>{
-    await ctx.render('请求错误404')
+    await ctx.render('404')
     
 })
 
